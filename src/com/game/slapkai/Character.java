@@ -3,6 +3,8 @@ package com.game.slapkai;
 import java.util.List;
 import java.util.Random;
 
+import com.quantcast.measurement.service.QuantcastClient;
+
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
 
@@ -76,10 +78,12 @@ public class Character {
             if(!isKai) {
             	gv.score += 1;
             	allTemps.add(new BloodSpill(gv, x, y, angel, false));
+            	QuantcastClient.logEvent("character survived");
             } else {
             	gv.score -= 10;
             	gv.kaiCount--;
             	allTemps.add(new BloodSpill(gv, x, y, devil, false));
+            	QuantcastClient.logEvent("kai survived");
             }
     	}
     }
