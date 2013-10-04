@@ -7,12 +7,14 @@ import android.view.Window;
 import com.quantcast.measurement.service.QuantcastClient;
 
 
+
 public class Main extends Activity {
 	
 	GameView gv = null;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		QuantcastClient.setEnableLocationGathering(true);
 		QuantcastClient.beginSessionWithApiKey(this, "0lnkxnci0mlmsquo-h9hu77wy738hds3j");
 		requestWindowFeature(Window.FEATURE_NO_TITLE);
 		gv = new GameView(this);
